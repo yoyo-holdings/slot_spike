@@ -1,0 +1,29 @@
+---
+swagger: 2.0
+basePath: /api
+produces:
+  - application/json
+paths:
+  /foo:
+    get:
+      x-mojo-controller: SlotSpike::Controller::Api
+      operationId: getFoo
+      summary: hello world!
+      description: |
+        This endpoint returns a well known greeting.  The response can
+        include a specific name to address this greeting to.
+      parameters:
+        - name: name
+          in: query
+          description: A name to send a greeting to.
+          type: string
+      responses:
+        200:
+          description: The greeting message.
+          schema:
+            $ref: '#/definitions/Message'
+definitions:
+  Message:
+    properties:
+      text:
+        type: string

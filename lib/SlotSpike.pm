@@ -8,6 +8,9 @@ sub startup {
   # Documentation browser under "/perldoc"
   $self->plugin('PODRenderer');
 
+  # Swagger2 plugin
+  $self->plugin('Swagger2', url => $self->home->rel_file('api.yaml') );
+
   # Router
   my $r = $self->routes;
 
