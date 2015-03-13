@@ -18,7 +18,7 @@ sub startup {
   $r->get('/')->to('example#welcome');
 
   # slot machine
-  $r->get('/slot')->to('api#index');
+  $r->get('/slots')->to('api#index');
 }
 
 1;
