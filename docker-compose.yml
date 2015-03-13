@@ -1,0 +1,14 @@
+web:
+  build: .
+  command: carton exec morbo -w api.yaml -w lib -w templates script/slot_spike
+  entrypoint: /bin/bash
+  ports:
+    - "3000:3000"
+  working_dir: /slot_spike
+swagger:
+  image: slotspike_web
+  command: carton exec perl script/slot_spike swagger2 edit api.yaml
+  entrypoint: /bin/bash
+  ports:
+    - "3001:3000"
+  working_dir: /slot_spike
