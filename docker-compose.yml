@@ -4,6 +4,11 @@ web:
   entrypoint: /bin/bash
   ports:
     - "3000:3000"
+  volumes:
+    - api.yaml:/slot_spike/api.yaml
+    - lib:/slot_spike/lib
+    - templates:/slot_spike/templates
+    - public:/slot_spike/public
   working_dir: /slot_spike
 swagger:
   image: slotspike_web
@@ -11,4 +16,9 @@ swagger:
   entrypoint: /bin/bash
   ports:
     - "3001:3000"
+  volumes:
+    - api.yaml:/slot_spike/api.yaml
+    - lib:/slot_spike/lib
+    - templates:/slot_spike/templates
+    - public:/slot_spike/public
   working_dir: /slot_spike
