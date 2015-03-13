@@ -1,4 +1,35 @@
-% layout 'default';
-% title 'Slot Machine';
-<h2>Slot Machine</h2>
+% layout 'slot';
+% title 'Slots';
+<h2>Slots</h2>
 The Slot Machine goes here.
+  <div id="viewport">
+    <div id="container">
+      <div id="header">
+	<h1>Slots Machine</h1>
+	<h3>Play and Win</h3>
+      </div>
+      <div id="reels">
+	<canvas id="canvas1" width="70" height="300"></canvas>
+	<canvas id="canvas2" width="70" height="300"></canvas>
+	<canvas id="canvas3" width="70" height="300"></canvas>
+	<div id="overlay">
+	  <div id="winline"></div>
+	</div>
+	<div id="results">
+	  <div id="score">
+	    <span id="multiplier">0</span> x <img src="img/gold-64.png"/>
+	  </div>
+	  <div id="status"></div>
+	</div>
+      </div>
+      <div id="buttons">
+	<div id="play" class="button button-default">Play</div>
+      </div>
+    </div>
+    <input id="debug" type="button" value="Toggle Reels"/>
+  </div>
+  %= javascript '/mojo/jquery/jquery.js'
+  %= javascript '/js/slot.js'
+  %= javascript begin
+    $(function() { SlotGame(); });
+  %= end
