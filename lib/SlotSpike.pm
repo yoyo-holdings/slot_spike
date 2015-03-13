@@ -16,6 +16,9 @@ sub startup {
 
   # Normal route to controller
   $r->get('/')->to('example#welcome');
+
+  # slot machine
+  $r->get('/slot')->to('api#index');
 }
 
 1;
