@@ -3,7 +3,14 @@ use Mojo::Base 'Mojolicious::Controller';
 
 sub index {
   my $c = shift;
-  #$c->render( text => 'main slot machine goes here' );
+
+  my $user = $c->param('user') || '';
+  my $pass = $c->param('pass') || '';
+
+  return $c->render
+      if $c->users->check($user, $pass);
+
+  $c->render( text => 'access denied!' );
 }
 
 sub get_foo {

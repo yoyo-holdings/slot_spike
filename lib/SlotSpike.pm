@@ -1,5 +1,6 @@
 package SlotSpike;
 use Mojo::Base 'Mojolicious';
+use SlotSpike::Model::Users;
 
 # This method will run once at server start
 sub startup {
@@ -10,6 +11,9 @@ sub startup {
 
   # Swagger2 plugin
   $self->plugin('Swagger2', url => $self->home->rel_file('api.yaml') );
+
+  # Users model
+  $self->helper( users => sub { state $users = SlotSpike::Model::Users->new } );
 
   # Router
   my $r = $self->routes;
