@@ -21,8 +21,13 @@ sub startup {
   # Normal route to controller
   $r->get('/')->to('example#welcome');
 
+  # Auth
+  $r->any('/login')->to('login#index');
+  $r->get('/logout')->to('login#logout');
+  my $logged_in = $r->under('/')->to('login#login');
+
   # slot machine
-  $r->get('/slots')->to('api#index');
+  $logged_in->get('/slots')->to('slots#index');
 }
 
 1;
