@@ -111,13 +111,13 @@ function SlotGame() {
 	}
 	// Draw the canvases with shuffled arrays
 	game.items1 = copyArray(items);
-	shuffleArray(game.items1);
+	// shuffleArray(game.items1);
 	_fill_canvas( game.c1[0], game.items1 );
 	game.items2 = copyArray(items);
-	shuffleArray(game.items2);
+	// shuffleArray(game.items2);
 	_fill_canvas( game.c2[0], game.items2 );
 	game.items3 = copyArray(items);
-	shuffleArray(game.items3);
+	// shuffleArray(game.items3);
 	_fill_canvas( game.c3[0], game.items3 );
 	game.resetOffset =  (ITEM_COUNT + 3) * SLOT_HEIGHT;
 	game.loop();
