@@ -2,6 +2,7 @@
 % title 'Slots';
 <h2>Slots</h2>
 The Slot Machine goes here.
+%= link_to Logout => 'logout'
   <div id="viewport">
     <div id="container">
       <div id="header">
