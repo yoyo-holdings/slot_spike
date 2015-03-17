@@ -9,7 +9,9 @@ sub get_foo {
 
 sub start_machine {
   my ( $c, $args, $cb ) = @_;
-  $c->$cb( { text => "slot result" }, 200 );
+  my $res = [];
+  push @$res, int rand 5 for 1..3;
+  $c->$cb( $res, 200 );
 }
 
 1;

@@ -191,9 +191,18 @@ Game.prototype.restart = function() {
     //this.result3 = _find( this.items3, 'gold-64' );
 
     // get random results
-    this.result1 = parseInt(Math.random() * this.items1.length)
-    this.result2 = parseInt(Math.random() * this.items2.length)
-    this.result3 = parseInt(Math.random() * this.items3.length)
+    // this.result1 = parseInt(Math.random() * this.items1.length)
+    // this.result2 = parseInt(Math.random() * this.items2.length)
+    // this.result3 = parseInt(Math.random() * this.items3.length)
+
+    // get results from local API
+    $.getJSON("/api/slots/start", function(data) {
+        console.log("getting results from API");
+        Game.prototype.result1 = data[0];
+        Game.prototype.result2 = data[1];
+        Game.prototype.result3 = data[2];
+        console.log(data);
+    });
 
     // Clear stop locations
     this.stopped1 = false;

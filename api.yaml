@@ -1,29 +1,37 @@
 ---
 swagger: 2.0
+host: localhost:3000
 basePath: /api
+schemes:
+  - http
+consumes:
+  - application/json
 produces:
   - application/json
+info:
+  title: Slot Machine API
+  description: Simple Slot Machine API spike
+  contact:
+    name: Zak B. Elep
+    url: https://github.com/yoyo-holdings/slot_spike
+    email: zak.elep@yoyo-holdings.com
+  version: 0.0.1
 paths:
-  /foo:
-    get:
+  /slots/start:
+    any:
       x-mojo-controller: SlotSpike::Controller::Api
-      operationId: getFoo
-      summary: hello world!
+      operationId: startMachine
+      summary: start the Slot Machine
       description: |
-        This endpoint returns a well known greeting.  The response can
-        include a specific name to address this greeting to.
-      parameters:
-        - name: name
-          in: query
-          description: A name to send a greeting to.
-          type: string
+        This endpoint returns an array of numbers corresponding
+        to the items/pictures to be shown on the slot machine.
+        The response also includes an optional point amount.
       responses:
         200:
-          description: The greeting message.
+          description: The slot machine result.
           schema:
-            $ref: '#/definitions/Message'
-definitions:
-  Message:
-    properties:
-      text:
-        type: string
+            type: array
+            items:
+              maxItems: 3
+              type: integer
+              description: Array of slot image numbers to be displayed.
