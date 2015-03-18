@@ -6,7 +6,8 @@
 
 `sudo` might be needed if you're on Ubuntu.
 
-* open http://localhost:3000/slots for the app
+* open http://localhost:3000/login for the app (see Users.pm for some
+  user/pass to use)
 * open http://localhost:3001/#toc for the Swagger editor
 
 ## Hacking
