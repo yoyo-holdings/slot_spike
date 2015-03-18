@@ -67,7 +67,7 @@ function copyArray( array ) {
 }
 
 
-function SlotGame() {
+function SlotGame(user) {
 
     var game = new Game();
 
@@ -126,7 +126,7 @@ function SlotGame() {
     $('#play').click(function(e) {
 	// start game on play button click
 	$('h1').text('Rolling!');
-	game.restart();
+	game.restart(user);
     });
 
     // Show reels for debugging
@@ -174,7 +174,7 @@ function Game() {
 }
 
 // Restar the game and determine the stopping locations for reels
-Game.prototype.restart = function() {
+Game.prototype.restart = function(user) {
     this.lastUpdate = new Date();
     this.speed1 = this.speed2 = this.speed3 = SLOT_SPEED
 
@@ -196,11 +196,14 @@ Game.prototype.restart = function() {
     // this.result3 = parseInt(Math.random() * this.items3.length)
 
     // get results from local API
-    $.getJSON("/api/slots/start", function(data) {
+    var that = this;
+    $.getJSON("/api/slots/start", {
+        user: user
+    }).done(function(data) {
         console.log("getting results from API");
-        Game.prototype.result1 = data[0];
-        Game.prototype.result2 = data[1];
-        Game.prototype.result3 = data[2];
+        that.result1 = data.slots[0];
+        that.result2 = data.slots[1];
+        that.result3 = data.slots[2];
         console.log(data);
     });
 

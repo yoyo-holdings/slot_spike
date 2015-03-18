@@ -32,5 +32,5 @@ The Slot Machine goes here.
   %= javascript '/mojo/jquery/jquery.js'
   %= javascript '/js/slot.js'
   %= javascript begin
-    $(function() { SlotGame(); });
+    $(function() { SlotGame('<%= $user %>'); });
   %= end

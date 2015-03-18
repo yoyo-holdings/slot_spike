@@ -26,12 +26,29 @@ paths:
         This endpoint returns an array of numbers corresponding
         to the items/pictures to be shown on the slot machine.
         The response also includes an optional point amount.
+      parameters:
+        - name: user
+          in: query
+          description: The user ID.
+          required: true
+          type: string
       responses:
         200:
           description: The slot machine result.
           schema:
-            type: array
-            items:
-              maxItems: 3
-              type: integer
-              description: Array of slot image numbers to be displayed.
+            $ref: '#/definitions/SlotMachineResult'
+definitions:
+  SlotMachineResult:
+    properties:
+      slots:
+        type: array
+        items:
+          maxItems: 3
+          type: integer
+          description: |
+            Array of integers corresponding to slot image
+            locations.
+      prize:
+        type: integer
+        default: 0
+        description: The prize point awarded.

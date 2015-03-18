@@ -9,8 +9,10 @@ sub get_foo {
 
 sub start_machine {
   my ( $c, $args, $cb ) = @_;
-  my $res = [];
-  push @$res, int rand 5 for 1..3;
+  my $user = $args->{user};
+  my $res = {};
+  push @{ $res->{slots} }, int rand 5 for 1..3;
+  $res->{prize} = int rand 1000;
   $c->$cb( $res, 200 );
 }
 
