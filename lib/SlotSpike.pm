@@ -9,9 +9,6 @@ sub startup {
   # Documentation browser under "/perldoc"
   $self->plugin('PODRenderer');
 
-  # Swagger2 plugin
-  $self->plugin('Swagger2', url => $self->home->rel_file('api.yaml') );
-
   # Users model
   $self->helper( users => sub { state $users = SlotSpike::Model::Users->new } );
 
@@ -28,6 +25,9 @@ sub startup {
 
   # slot machine
   $logged_in->get('/slots')->to('slots#index');
+
+  # Swagger2 plugin
+  $self->plugin('Swagger2', route => $logged_in, url => $self->home->rel_file('api.yaml') );
 }
 
 1;
